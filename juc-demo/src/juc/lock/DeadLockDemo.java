@@ -2,9 +2,9 @@ package juc.lock;
 
 import java.util.concurrent.TimeUnit;
 
-//这种情况就陷入死锁，解决方法：
-//1.使用Jps 定位我们的进程号 jps -l
-// 2.  jstack 加上1获取的进程号 发现提示 Found 1 deadLOCK.
+// This scenario creates a deadlock. Diagnose it with:
+// 1. Use jps -l to locate the process ID.
+// 2. Use jstack with the process ID to inspect the thread dump (for example, "Found 1 deadlock").
 public class DeadLockDemo {
     public static void main(String[] args) {
         String lockA = "lockA";

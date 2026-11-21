@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @ClassName VDemo02
- * @Description 如何保线程操作的原子性？  在不使用lock/synchronized的情况下 使用atomicXX类。
+ * @Description How can thread operations remain atomic without lock or synchronized? Use atomic classes.
  * @Author ChenYu
  * @Date 2021/8/12 18:03
  **/
@@ -16,7 +16,7 @@ public class VDemo02 {
     }
 
     public static void main(String[] args) {
-        //理论上num应该是2W
+        // The result should theoretically be 20,000
         for (int i = 1; i <= 20; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {

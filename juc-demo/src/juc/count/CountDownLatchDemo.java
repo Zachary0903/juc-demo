@@ -5,13 +5,13 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * @ClassName CountDownLatch
- * @Description 加法计数器
+ * @Description Demonstrates a count-down latch
  * @Author ChenYu
  * @Date 2021/8/10 16:42
  **/
 public class CountDownLatchDemo {
     public static void main(String[] args) throws InterruptedException {
-        //总数是6，必须要执行任务的时候，再使用！
+        // The initial count is 6; use the latch when tasks must finish before proceeding.
         CountDownLatch countDownLatch = new CountDownLatch(6);
 
         for (int i = 0; i < 6; i++) {

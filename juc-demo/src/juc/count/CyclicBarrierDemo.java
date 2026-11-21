@@ -6,23 +6,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @ClassName CyclicBarrierDemo
- * @Description 减法计数器
+ * @Description Demonstrates a cyclic barrier
  * @Author ChenYu
  * @Date 2021/8/10 16:48
  **/
 public class CyclicBarrierDemo {
     public static void main(String[] args) {
-        //集齐7颗龙珠召唤神龙
-        //召唤神龙的线程
+        // Gather seven Dragon Balls to summon Shenron
+        // Thread that summons Shenron
         CyclicBarrier cyclicBarrier = new CyclicBarrier(7, () -> {
-            System.out.println("集齐七颗龙珠，开始召唤神龙！！");
+            System.out.println("All seven Dragon Balls collected. Summoning Shenron!");
         });
         for (int i = 1; i <= 7; i++) {
 
             {
                 int finalI = i;
                 new Thread(() -> {
-                    System.out.println(Thread.currentThread().getName() + "收到了第" + finalI + "颗龙珠！");
+                    System.out.println(Thread.currentThread().getName() + " received Dragon Ball #" + finalI);
                     try {
                         cyclicBarrier.await();
                     } catch (InterruptedException e) {
@@ -35,4 +35,3 @@ public class CyclicBarrierDemo {
         }
     }
 }
-

@@ -3,7 +3,7 @@ package juc.lock;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-//可重入锁测试，ReentrantLock本身就是可重入锁的意思。要注意的是Lock和unlock必须一一配对，否则会死锁！！
+// Demonstrates reentrant locking. lock() and unlock() calls must be balanced; otherwise, the resource may remain locked.
 public class ReentrantLockDemo {
     Lock lock = new ReentrantLock();
 

@@ -13,9 +13,9 @@ public class CallableTest {
     public static void main(String[] args) throws Exception {
         FutureTask futureTask = new FutureTask(new MyCallable());
         new Thread(futureTask, "A").start();
-        new Thread(futureTask, "B").start();//结果会被缓存
+        new Thread(futureTask, "B").start();// The result will be cached
 
-        System.out.println(futureTask.get());//结果可能需要等待，会阻塞
+        System.out.println(futureTask.get());// The result may require waiting and block the caller
     }
 }
 

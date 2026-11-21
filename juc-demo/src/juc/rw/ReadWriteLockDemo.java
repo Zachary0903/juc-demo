@@ -7,13 +7,13 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @ClassName ReadWriteLockDemo
- * @Description 读-读 可以共存，读-写 不能共存，写-写 不能共存！
+ * @Description Read-read operations can run concurrently; read-write and write-write operations cannot.
  * @Author ChenYu
  * @Date 2021/8/10 17:50
  **/
 
-// 独占锁（写锁） 一次只能被一个线程所占用
-// 共享锁(读锁)  一次可以被多个线程所使用
+// Exclusive lock (write lock): held by only one thread at a time
+// Shared lock (read lock): can be held by multiple threads concurrently
 public class ReadWriteLockDemo {
     public static void main(String[] args) {
         CacheLock cacheLock = new CacheLock();
@@ -40,9 +40,9 @@ class CacheLock {
     public void put(String key, String val) {
         try {
             readWriteLock.writeLock().lock();
-            System.out.println(Thread.currentThread().getName() + "放入键:" + key);
+            System.out.println(Thread.currentThread().getName() + " inserted key:" + key);
             cache.put(key, val);
-            System.out.println(Thread.currentThread().getName() + "放入键OK");
+            System.out.println(Thread.currentThread().getName() + " insertion complete");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -53,8 +53,8 @@ class CacheLock {
     public String get(String key) {
         try {
             readWriteLock.readLock().lock();
-            System.out.println(Thread.currentThread().getName() + "取出键:" + key);
-            System.out.println(Thread.currentThread().getName() + "取出键OK");
+            System.out.println(Thread.currentThread().getName() + " retrieved key:" + key);
+            System.out.println(Thread.currentThread().getName() + " retrieval complete");
 
         } catch (Exception e) {
             e.printStackTrace();

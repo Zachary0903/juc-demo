@@ -1,25 +1,25 @@
 package juc.singleton;
 
 
-//懒汉式
+// Lazy initialization
 public class LazyMan {
 
-    private volatile static LazyMan lazyMan; //加volatile防止指令重排
+    private volatile static LazyMan lazyMan; // volatile prevents instruction reordering
 
     private LazyMan() {
         System.out.println(Thread.currentThread().getName() + "build OK");
     }
 
-    //DCL双重检测锁 可以防止并发问题，但是不能防止指令重排
+    // Double-checked locking prevents concurrency issues but was historically vulnerable to reordering
     public static LazyMan getInstance() {
         if (lazyMan == null) {
             synchronized (LazyMan.class) {
                 if (lazyMan == null) {
-                    lazyMan = new LazyMan(); //但这不是一个原子性的操作
+                    lazyMan = new LazyMan(); // This is not an atomic operation
                 }
-                //  1.在内存里分配新空间
-                //  2.通过构造函数创建对象
-                //  3.把对象指向新工间
+                //  1. Allocate memory
+                //  2. Invoke the constructor
+                //  3. Assign the reference to the new object
             }
         }
         return lazyMan;

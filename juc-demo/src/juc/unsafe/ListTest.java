@@ -5,22 +5,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @ClassName ListTest
- * @Description 集合测试
+ * @Description Collection concurrency test
  * @Author ChenYu
  * @Date 2021/7/13 21:27
  **/
 public class ListTest {
-    // java.util.ConcurrentMoidificatioException 集合类并发修改异常
-    // 有几种解决方案：
+    // java.util.ConcurrentModificationException indicates concurrent collection modification.
+    // Common solutions:
 
     /**
-     * 1.用vector
-     * 2.用Collectors.synchronized()包装下
-     * 3.使用CopyOnWriteArrayList、CopyOnWriteArraySet、ConcurrentHashMap
+     * 1. Use Vector
+     * 2. Wrap the collection with Collections.synchronized* methods
+     * 3. Use CopyOnWriteArrayList, CopyOnWriteArraySet, or ConcurrentHashMap
      */
 
-    //CopyOnWrite 写入时赋值 COW 计算机程序设计领域时的一种优化策略
-    // CopyOnWriteArrayList和vector的区别，vector底层使用synchorinized效率比较低，CopyOnWriteArrayList使用reentrantLock
+    // Copy-on-write (COW) is an optimization strategy in which writes operate on a copy.
+    // CopyOnWriteArrayList uses ReentrantLock, while Vector uses synchronized and generally has lower concurrency throughput.
     public static void main(String[] args) {
         List<String> list = new CopyOnWriteArrayList<>();
 

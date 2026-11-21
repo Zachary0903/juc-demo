@@ -6,7 +6,7 @@ import java.util.function.Function;
 
 /**
  * @ClassName Demo01
- * @Description FUNCTION:.输出什么就返回什么
+ * @Description Function: returns a result based on the provided input
  * @Author ChenYu
  * @Date 2021/8/11 19:09
  **/

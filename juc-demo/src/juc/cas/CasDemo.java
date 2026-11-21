@@ -3,11 +3,11 @@ package juc.cas;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
-//解决CAS自旋引起的ABA问题，
+// Resolve the ABA problem caused by CAS spin loops.
 public class CasDemo {
 
-    //注意，如果AtomicStampedReference的泛型是一个包装类，注意对象的引用问题。
-    //Integer超过-127~128，会产生新的对象，这时候比较和原对象相等即会失败。这是一个大坑。
+    // If AtomicStampedReference uses a wrapper type, account for object reference semantics.
+    // Integer values outside -128 to 127 create new objects, so reference-based comparison may unexpectedly fail.
     public static void main(String[] args) {
         AtomicStampedReference<Integer> stampedReference = new AtomicStampedReference<>(1, 1);
 

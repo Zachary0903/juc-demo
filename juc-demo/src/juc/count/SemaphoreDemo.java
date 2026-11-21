@@ -12,16 +12,16 @@ import java.util.concurrent.TimeUnit;
 public class SemaphoreDemo {
 
     public static void main(String[] args) {
-        //模拟停车位，一共就只有三个位置
+        // Simulate three parking spaces
         Semaphore semaphore = new Semaphore(3);
 
-        for (int i = 1; i <= 6; i++) {//一共有六辆车开进来
+        for (int i = 1; i <= 6; i++) {// Six vehicles attempt to enter
             new Thread(() -> {
                 try {
                     semaphore.acquire();
-                    System.out.println(Thread.currentThread().getName() + "抢到了车位！");
+                    System.out.println(Thread.currentThread().getName() + " acquired a parking space!");
                     TimeUnit.SECONDS.sleep(2);
-                    System.out.println(Thread.currentThread().getName() + "离开了车位！");
+                    System.out.println(Thread.currentThread().getName() + " released a parking space!");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

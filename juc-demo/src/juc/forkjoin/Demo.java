@@ -1,13 +1,9 @@
 package juc.forkjoin;
 
-import com.sun.tools.doclint.Entity;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.LongStream;
 
-import static com.sun.tools.doclint.Entity.sum;
-import static juc.bq.QueueDemo.test1;
 
 /**
  * @ClassName Demo
@@ -23,7 +19,7 @@ public class Demo {
     }
 
 
-    //最蠢的
+    // Baseline implementation using a sequential loop
     private static void test1() {
         long start = System.currentTimeMillis();
         long sum = 0L;
@@ -32,10 +28,10 @@ public class Demo {
         }
         //add here
         long end = System.currentTimeMillis();
-        System.out.println("sum=" + sum + "执行时间为：" + (end - start));
+        System.out.println("sum=" + sum + ", execution time=" + (end - start) + " ms");
     }
 
-    //较快  sum=500000000500000000执行时间为：5790
+    // ForkJoin implementation: sum=500000000500000000, execution time=5790 ms
     private static void test2() {
         long start = System.currentTimeMillis();
         long sum = 0L;
@@ -50,13 +46,13 @@ public class Demo {
         }
         //add here
         long end = System.currentTimeMillis();
-        System.out.println("sum=" + sum + "执行时间为：" + (end - start));
+        System.out.println("sum=" + sum + ", execution time=" + (end - start) + " ms");
     }
 
     private static void test3() {
         long start = System.currentTimeMillis();
         long sum = LongStream.rangeClosed(0, 10_0000_0000L).parallel().reduce(0, Long::sum);
         long end = System.currentTimeMillis();
-        System.out.println("sum=" + sum + "执行时间为：" + (end - start));
+        System.out.println("sum=" + sum + ", execution time=" + (end - start) + " ms");
     }
 }

@@ -2,7 +2,7 @@ package juc;
 
 /**
  * @ClassName ConditionTest
- * @Description 同步监视器测试类
+ * @Description Synchronization monitor test class
  * @Author ChenYu
  * @Date 2021/7/13 20:36
  **/

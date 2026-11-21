@@ -22,17 +22,17 @@ public class QueueDemo {
     /**
      * @param
      * @return void
-     * @Description: 会抛出异常的, 使用add/remove
+     * @Description: Operations that throw exceptions: add/remove
      */
     public static void test1() {
         List<String> list = Arrays.asList("a", "b", "c");
         ArrayBlockingQueue blockingQueue = new ArrayBlockingQueue(3, false, list);
-        System.out.println("队首是:" + blockingQueue.element());
+        System.out.println("Queue head:" + blockingQueue.element());
         System.out.println(blockingQueue.remove());
-        System.out.println("队首是:" + blockingQueue.element());
+        System.out.println("Queue head:" + blockingQueue.element());
         System.out.println(blockingQueue.remove());
         System.out.println(blockingQueue.remove());
-        System.out.println("队首是:" + blockingQueue.element());
+        System.out.println("Queue head:" + blockingQueue.element());
 
 //        System.out.println(blockingQueue.remove());
 
@@ -41,26 +41,26 @@ public class QueueDemo {
     /**
      * @param
      * @return void
-     * @Description: 不会抛出异常的, 使用offer/poll
+     * @Description: Operations that do not throw exceptions: offer/poll
      */
     public static void test2() {
         List<String> list = Arrays.asList("a", "b", "c");
         ArrayBlockingQueue blockingQueue = new ArrayBlockingQueue(3, false, list);
-        System.out.println("队首是:" + blockingQueue.peek());
+        System.out.println("Queue head:" + blockingQueue.peek());
 
 //        System.out.println(blockingQueue.offer("d"));
         System.out.println(blockingQueue.poll());
         System.out.println(blockingQueue.poll());
         System.out.println(blockingQueue.poll());
         System.out.println(blockingQueue.poll());
-        System.out.println("队首是:" + blockingQueue.peek());
+        System.out.println("Queue head:" + blockingQueue.peek());
 
     }
 
     /**
      * @param
      * @return void
-     * @Description: 等待，阻塞（一直阻塞）,使用Put/take
+     * @Description: Blocking operations that wait indefinitely: put/take
      */
     public static void test3() {
         ArrayBlockingQueue blockingQueue = new ArrayBlockingQueue(3);
@@ -75,14 +75,14 @@ public class QueueDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        System.out.println("队首是:"+blockingQueue.peek());
+//        System.out.println("Queue head:" + blockingQueue.peek());
 
     }
 
     /**
      * @param
      * @return void
-     * @Description: 等待，阻塞（等待超时，超过时间就不等了）
+     * @Description: Timed blocking operations that stop waiting after a timeout
      */
     public static void test4() {
         ArrayBlockingQueue blockingQueue = new ArrayBlockingQueue(3);
@@ -103,8 +103,8 @@ public class QueueDemo {
 
     }
 
-    //同步队列test,同步队列和其他的blockingQueue不一样，
-    // synchronousQueue不存储元素，put了一个元素，必须从里面take出来，否则不能再put进去。
+    // SynchronousQueue test. Unlike other BlockingQueue implementations,
+    // SynchronousQueue does not store elements. A put call must be matched by a take call.
     public static void test5() {
         BlockingQueue<String> blockingQueue = new SynchronousQueue<>();
 

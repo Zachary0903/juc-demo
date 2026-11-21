@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 /**
  * @ClassName ConsumerDemo
- * @Description 只有输入，没有返回值
+ * @Description Accepts an input and returns no result
  * @Author ChenYu
  * @Date 2021/8/11 19:17
  **/

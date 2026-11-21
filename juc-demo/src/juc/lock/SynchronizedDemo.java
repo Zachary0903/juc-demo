@@ -1,6 +1,6 @@
 package juc.lock;
 
-//可重入锁测试，代表获得了外面的一把也就获得了房间内的锁；好比你有大门的锁就一定会有卧室的锁
+// Demonstrates reentrant synchronization: acquiring the outer lock also grants access to nested synchronized blocks.
 public class SynchronizedDemo {
     public static void main(String[] args) {
         SynchronizedDemo demo = new SynchronizedDemo();

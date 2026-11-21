@@ -9,7 +9,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @ClassName ListTest
- * @Description 集合测试
+ * @Description Concurrent set test
  * @Author ChenYu
  * @Date 2021/7/13 21:27
  **/

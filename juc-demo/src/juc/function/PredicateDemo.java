@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 /**
  * @ClassName Demo02
- * @Description Predicate: 判断字符串是否为空
+ * @Description Predicate: determines whether a string is empty
  * @Author ChenYu
  * @Date 2021/8/11 19:14
  **/

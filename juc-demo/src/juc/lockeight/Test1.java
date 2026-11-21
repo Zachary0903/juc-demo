@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName Test1
- * @Description 八锁测试
+ * @Description Eight-lock test
  * @Author ChenYu
  * @Date 2021/7/13 20:54
  **/
@@ -28,14 +28,14 @@ public class Test1 {
 
 class MobilePhone {
 
-    //synchronized锁的对象是方法的调用者，如果synchronized前面有static静态方法的话锁的是class模板
-    //两个方法用的是同一个锁，谁先拿到谁先执行
+    // synchronized locks the method receiver; a static synchronized method locks the class template
+    // Both methods use the same lock; execution order is determined by lock acquisition
     public synchronized void sendSms() {
-        System.out.println("发短信");
+        System.out.println("Send SMS");
     }
 
     public synchronized void call() {
-        System.out.println("打电话");
+        System.out.println("Make a phone call");
 
     }
 }
